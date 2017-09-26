@@ -1,0 +1,74 @@
+<ekinerja-navbar></ekinerja-navbar>
+<section style="width: 90%;padding-left: 10%;padding-top: 50px;" class="content-position">
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>Daftar Uraian Tugas Tahun 2017</h2>
+                        <!-- <i class="material-icons material-refresh-animate" ng-show="urtug_jabatan.loading" >cached</i> -->
+                    </div>
+                    <div class="body">
+                        <!-- <h3 style="margin-bottom: 50px">{{urtug_jabatan.jabatan.jabatan}} &nbsp</h3> -->
+                        <div class="col-md-6">
+                            <div class="col-md-1">
+                                <label style="margin-top: 5px">Cari</label>
+                            </div>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control" placeholder="Rincian Tugas dan Kegiatan...." ng-model="searchName">
+                            </div>
+                        </div>
+                        <div class="col-md-6">    
+                            <!-- <div class="col-md-8"></div>
+                            <button class="btn btn-primary waves-effect" ng-click="urtug_jabatan.open()">Atur Uraian Tugas</button> -->
+                        </div>
+                        <div style="padding-bottom: 10px"></div>
+                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th style="width: 5%; text-align: center">No</th>
+                                    <th style="text-align: center">Rincian Tugas dan Kegiatan</th>
+                                    <th style="width: 10%; text-align: center">Satuan</th>
+                                    <th style="width: 5%; text-align: center">jumlah/Volume Kerja</th>
+                                    <th style="width: 5%; text-align: center">Norma Waktu (Menit)</th>
+                                    <th style="width: 5%; text-align: center">Beban Kerja</th>
+                                    <th style="width: 10%; text-align: center">Peralatan</th>
+                                    <th style="width: 5%; text-align: center">Keterangan</th>
+                                    <!-- <th width="14%" style="width: 10%; text-align: center">Action</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="urtug in filteredData">
+                                    <td>{{$index + 1 + (5 * currentPage )}}</td>
+                                    <td>{{urtug.deskripsi}}</td>
+                                    <td>{{urtug.satuan}}</td>
+                                    <td>{{urtug.volumeKerja}}</td>
+                                    <td>{{urtug.normaWaktu}}</td>
+                                    <td>{{urtug.bebanKerja}}</td>
+                                    <td>{{urtug.peralatan}}</td>
+                                    <td>{{urtug.keterangan}}</td>
+                                    <!-- <td>
+                                        <button type="button" class="btn btn-warning waves-effect btn-circle waves-circle" data-toggle="modal" data-target="#tModal"><i class="material-icons">edit</i></button>
+                                        <button type="button" class="btn btn-danger waves-effect btn-circle waves-circle"><i class="material-icons">delete_forever</i></button>
+                                    </td> -->
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div layout="row">
+                            <div class="col-md-5"></div>
+                            <button class="btn btn-primary btn-circle waves-circle waves-effect" ng-click="pad(-1)" ng-disabled="currentPage==0" aria-label="Use Android">
+                              <i class="material-icons">navigate_before</i>
+                            </button>
+                            <label style="margin-top: 20px">{{currentPage+1 + '/' + maxSize}}</label>
+                            <button class="btn btn-primary btn-circle waves-circle waves-effect" ng-click="pad(1)" ng-disabled="max()" aria-label="Use Android">
+                              <i class="material-icons">navigate_next</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- <script src="assets/js/dataTableActive.js"></script>
+<script src="assets/plugins/jquery-flexdatalist/jquery.flexdatalist.min.js"></script> -->

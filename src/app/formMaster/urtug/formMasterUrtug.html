@@ -1,0 +1,101 @@
+ <div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Tambah Uraian Tugas</h3>
+</div>
+<form ng-submit="form_urtug.ok()" class="form-horizontal">
+<div class="modal-body" id="modal-body">
+    <input type="hidden" value=""/>
+    <div class="form-body">
+        <div class="body">
+            <div class="row clearfix">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="body">
+                    <div class="row clearfix">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-md-12" style="margin-bottom:10px">
+                                <!-- <div class="col-md-1"></div> -->
+                                <div class="col-sm-3" style="margin-top:5px">
+                                    <p><b>Kegiatan</b></p>
+                                </div>
+                                <div class="col-sm-1" style="margin-top:5px"><b>:</b></div>
+                                <div class="col-md-8">
+                                <textarea type="text" class="form-control" ng-model="form_urtug.data_urtug.deskripsi" ng-required="true"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-bottom:10px">
+                                <!-- <div class="col-md-1"></div> -->
+                                <div class="col-sm-3" style="margin-top:5px">
+                                    <p><b>Satuan</b></p>
+                                </div>
+                                <div class="col-sm-1" style="margin-top:5px"><b>:</b></div>
+                                <div class="col-md-4">
+                                <input type="text" class="form-control" ng-model="form_urtug.data_urtug.satuan" ng-required="true" >
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-bottom:10px">
+                                <!-- <div class="col-md-1"></div> -->
+                                <div class="col-sm-3" style="margin-top:5px">
+                                    <p><b>Volume Kerja</b></p>
+                                </div>
+                                <div class="col-sm-1" style="margin-top:5px"><b>:</b></div>
+                                <div class="col-md-3">
+                                <input type="number" min="0" class="form-control" ng-change="form_urtug.calculateBeban()" ng-model="form_urtug.data_urtug.volumeKerja" ng-required="true" style="text-align: right">
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-bottom:10px">
+                                <!-- <div class="col-md-1"></div> -->
+                                <div class="col-sm-3" style="margin-top:5px">
+                                    <p><b>Norma Waktu</b></p>
+                                </div>
+                                <div class="col-sm-1" style="margin-top:5px"><b>:</b></div>
+                                <div class="col-md-3">
+                                <input type="number" min="0" class="form-control" ng-change="form_urtug.calculateBeban()" ng-model="form_urtug.data_urtug.normaWaktu" ng-required="true" style="text-align: right">
+                                </div>
+                                <div class="col-md-1" style="margin-top: 5px; margin-left: -20px"><b>Menit</b></div>
+                            </div>
+                            <div class="col-md-12" style="margin-bottom:10px">
+                                <!-- <div class="col-md-1"></div> -->
+                                <div class="col-sm-3" style="margin-top:5px">
+                                    <p><b>Beban Kerja</b></p>
+                                </div>
+                                <div class="col-sm-1" style="margin-top:5px"><b>:</b></div>
+                                <div class="col-md-3">
+                                <input type="number" class="form-control" ng-model="form_urtug.data_urtug.bebanKerja" ng-required="true" disabled style="text-align: right">
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-bottom:10px">
+                                <!-- <div class="col-md-1"></div> -->
+                                <div class="col-sm-3" style="margin-top:5px">
+                                    <p><b>Peralatan</b></p>
+                                </div>
+                                <div class="col-sm-1" style="margin-top:5px"><b>:</b></div>
+                                <div class="col-md-6">
+                                <input type="text" class="form-control" ng-model="form_urtug.data_urtug.peralatan" ng-required="true" >
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-bottom:10px">
+                                <!-- <div class="col-md-1"></div> -->
+                                <div class="col-sm-3" style="margin-top:5px">
+                                    <p><b>Keterangan</b></p>
+                                </div>
+                                <div class="col-sm-1" style="margin-top:5px"><b>:</b></div>
+                                <div class="col-md-6">
+                                <input type="text" class="form-control" ng-model="form_urtug.data_urtug.keterangan">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>                              
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="modal-footer">
+        <button type="submit"  class="btn btn-primary waves-effect">Save</button>
+        <button type="button" ng-click="form_urtug.cancel()" class="btn btn-danger waves-effect" data-dismiss="modal">Cancel</button>
+    </div>
+</form>
+<!-- <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div> -->

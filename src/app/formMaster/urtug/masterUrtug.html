@@ -33,23 +33,23 @@
                                 <tr>
                                     <th style="width: 5%;text-align: center">No.</th>
                                     <th style="text-align: center">Rincian Tugas/Kegiatan</th>
-                                    <th style="width: 10%; text-align: center">Satuan</th>                                      
-                                    <th style="width: 5%; text-align: center">Jumlah/Volume Kerja</th>                                      
-                                    <th style="width: 5%; text-align: center">Norma Waktu (Menit)</th>                                      
-                                    <th style="width: 5%; text-align: center">Beban Kerja</th>                                      
-                                    <th style="width: 10%; text-align: center">Peralatan</th>                                      
-                                    <th style="width: 5%; text-align: center">Keterangan</th>                                      
+                                    <th style="width: 10%; text-align: center" hidden>Satuan</th>                                      
+                                    <th style="width: 5%; text-align: center" hidden>Jumlah/Volume Kerja</th>                                      
+                                    <th style="width: 5%; text-align: center" hidden>Norma Waktu (Menit)</th>                                      
+                                    <th style="width: 5%; text-align: center" hidden>Beban Kerja</th>                                      
+                                    <th style="width: 10%; text-align: center" hidden>Peralatan</th>                                      
+                                    <th style="width: 5%; text-align: center" hidden>Keterangan</th>                                      
                                     <th style="width: 10%; text-align: center">Action</th>                                      
                                 </tr>
                                 <tr>
                                     <th style="text-align: center">1</th>
                                     <th style="text-align: center">2</th>
-                                    <th style="text-align: center">3</th>
-                                    <th style="text-align: center">4</th>
-                                    <th style="text-align: center">5</th>
-                                    <th style="text-align: center">6(4x5)</th>
-                                    <th style="text-align: center">7</th>
-                                    <th style="text-align: center">8</th>
+                                    <th style="text-align: center" hidden>3</th>
+                                    <th style="text-align: center" hidden>4</th>
+                                    <th style="text-align: center" hidden>5</th>
+                                    <th style="text-align: center" hidden>6(4x5)</th>
+                                    <th style="text-align: center" hidden>7</th>
+                                    <th style="text-align: center" hidden>8</th>
                                     <th style="text-align: center"></th>
                                 </tr>
                             </thead>
@@ -57,12 +57,12 @@
                                 <tr ng-repeat="data in filteredData">
                                     <td scope="row">{{$index + 1 + (5*currentPage)}}</td>
                                     <td style="text-align: left">{{data.deskripsi}}</td>
-                                    <td>{{data.satuan}}</td>
-                                    <td>{{data.volumeKerja}}</td>
-                                    <td>{{data.normaWaktu}}</td>
-                                    <td>{{data.bebanKerja}}</td>
-                                    <td>{{data.peralatan}}</td>
-                                    <td>
+                                    <td hidden>{{data.satuan}}</td>
+                                    <td hidden>{{data.volumeKerja}}</td>
+                                    <td hidden>{{data.normaWaktu}}</td>
+                                    <td hidden>{{data.bebanKerja}}</td>
+                                    <td hidden>{{data.peralatan}}</td>
+                                    <td hidden>
                                         {{data.keterangan}}
                                     	<!-- <button type="button" class="btn btn-info waves-effect" data-toggle="modal" data-target="#defaultModal">DETAIL</button>
 		                                <button type="button" class="btn btn-warning waves-effect" data-toggle="modal" data-target="#defaultModal">EDIT</button>

@@ -1,5 +1,5 @@
- <div class="modal-header">
-    <h3 class="modal-title" id="modal-title">Tambah Uraian Tugas</h3>
+ <div class="modal-header" style="background-color:#1fcfe0;">
+    <h3 class="modal-title" id="modal-title" style="padding-bottom: 15px;font-size: 20px;">Tambah Uraian Tugas</h3>
 </div>
 <form ng-submit="form_urtug.ok()" class="form-horizontal">
 <div class="modal-body" id="modal-body">
@@ -18,10 +18,10 @@
                                 </div>
                                 <div class="col-sm-1" style="margin-top:5px"><b>:</b></div>
                                 <div class="col-md-8">
-                                <textarea type="text" class="form-control" ng-model="form_urtug.data_urtug.deskripsi" ng-required="true"></textarea>
+                                <textarea type="text" class="form-control" ng-model="form_urtug.data_urtug.deskripsi" ng-required="true" rows="6"></textarea>
                                 </div>
                             </div>
-                            <div class="col-md-12" style="margin-bottom:10px">
+                            <div class="col-md-12" style="margin-bottom:10px" hidden>
                                 <!-- <div class="col-md-1"></div> -->
                                 <div class="col-sm-3" style="margin-top:5px">
                                     <p><b>Satuan</b></p>
@@ -31,7 +31,7 @@
                                 <input type="text" class="form-control" ng-model="form_urtug.data_urtug.satuan" ng-required="true" >
                                 </div>
                             </div>
-                            <div class="col-md-12" style="margin-bottom:10px">
+                            <div class="col-md-12" style="margin-bottom:10px" hidden>
                                 <!-- <div class="col-md-1"></div> -->
                                 <div class="col-sm-3" style="margin-top:5px">
                                     <p><b>Volume Kerja</b></p>
@@ -41,7 +41,7 @@
                                 <input type="number" min="0" class="form-control" ng-change="form_urtug.calculateBeban()" ng-model="form_urtug.data_urtug.volumeKerja" ng-required="true" style="text-align: right">
                                 </div>
                             </div>
-                            <div class="col-md-12" style="margin-bottom:10px">
+                            <div class="col-md-12" style="margin-bottom:10px" hidden>
                                 <!-- <div class="col-md-1"></div> -->
                                 <div class="col-sm-3" style="margin-top:5px">
                                     <p><b>Norma Waktu</b></p>
@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px; margin-left: -20px"><b>Menit</b></div>
                             </div>
-                            <div class="col-md-12" style="margin-bottom:10px">
+                            <div class="col-md-12" style="margin-bottom:10px" hidden>
                                 <!-- <div class="col-md-1"></div> -->
                                 <div class="col-sm-3" style="margin-top:5px">
                                     <p><b>Beban Kerja</b></p>
@@ -62,7 +62,7 @@
                                 <input type="number" class="form-control" ng-model="form_urtug.data_urtug.bebanKerja" ng-required="true" disabled style="text-align: right">
                                 </div>
                             </div>
-                            <div class="col-md-12" style="margin-bottom:10px">
+                            <div class="col-md-12" style="margin-bottom:10px" hidden>
                                 <!-- <div class="col-md-1"></div> -->
                                 <div class="col-sm-3" style="margin-top:5px">
                                     <p><b>Peralatan</b></p>
@@ -72,7 +72,7 @@
                                 <input type="text" class="form-control" ng-model="form_urtug.data_urtug.peralatan" ng-required="true" >
                                 </div>
                             </div>
-                            <div class="col-md-12" style="margin-bottom:10px">
+                            <div class="col-md-12" style="margin-bottom:10px" hidden>
                                 <!-- <div class="col-md-1"></div> -->
                                 <div class="col-sm-3" style="margin-top:5px">
                                     <p><b>Keterangan</b></p>

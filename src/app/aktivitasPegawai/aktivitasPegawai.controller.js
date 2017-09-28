@@ -9,6 +9,7 @@ angular.
       EkinerjaService.checkCredential();
       // EkinerjaService.checkRole($.parseJSON(sessionStorage.getItem('credential')).id);
       var vm = this;
+      vm.loading = true;
 
       vm.pegawai = $.parseJSON(sessionStorage.getItem('credential'));
       vm.rincian = [];
@@ -35,8 +36,9 @@ angular.
       			vm.dataLook = response;
       			paging();
       			// debugger
+      			vm.loading = false;
       		}, function(errResponse){
-
+      			vm.loading = false;
       		}
       	)
       }

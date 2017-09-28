@@ -143,6 +143,9 @@ $.AdminBSB.leftSideBar = {
         if (width < $.AdminBSB.options.leftSideBar.breakpointWidth) {
             $body.addClass('ls-closed');
             $openCloseBar.fadeIn();
+        }else{
+            $body.addClass('ls-closed');
+            $openCloseBar.fadeIn();
         }
     },
     isOpen: function () {

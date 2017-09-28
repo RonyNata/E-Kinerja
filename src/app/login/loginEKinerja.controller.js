@@ -28,14 +28,17 @@ angular
             LoginEKinerjaService.Login($scope.nip, $scope.password).then(
                 function(response){
                     // LoginEKinerjaService.SetCredentials($scope.nip, $scope.password);
-                    // debugger;
+                    debugger;
                     sessionStorage.setItem('credential', JSON.stringify(response.data));
                     EkinerjaService.checkRole(response.data.role.id);
+                    $scope.dataLoading = false;
                     // $state.go('master-urtug');
                 }, function(errResponse) {
-                    debugger
-                    EkinerjaService.showToastrError(errResponse.data.message);
+                    // debugger
                     $scope.dataLoading = false;
+                    if(errResponse.status >= 0)
+                        EkinerjaService.showToastrError(errResponse.data.message);
+                    else EkinerjaService.showToastrError("Network Error");
                 }
             );
         }

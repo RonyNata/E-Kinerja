@@ -7,11 +7,12 @@ angular.
 
 	function MasterUrtugController(MasterUrtugService, $uibModal, $document, toastr, EkinerjaService, $scope){
 		var vm = this;
+		vm.loading = false;
 
 		EkinerjaService.checkCredential();
       	// EkinerjaService.checkRole($.parseJSON(sessionStorage.getItem('credential')).id);
 
-		vm.data = true;
+		vm.data = false;
 
 		vm.data_pegawai = {};
 		vm.data_urtug = [];
@@ -26,9 +27,10 @@ angular.
 					vm.data_urtug = response;
 					vm.dataLook = angular.copy(vm.data_urtug);
 					paging();
+					vm.loading = true;
 					// debugger
 				},function(errResponse){
-
+					vam.loading = true;
 				}
 			)
 		}

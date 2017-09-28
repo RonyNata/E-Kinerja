@@ -7,6 +7,7 @@ angular.
 
     function KontrakPegawaiController(KontrakPegawaiService, EkinerjaService, $scope) {
       var vm = this;
+      vm.loading = true;
 
       EkinerjaService.checkCredential();
       // EkinerjaService.checkRole($.parseJSON(sessionStorage.getItem('credential')).id);
@@ -23,8 +24,10 @@ angular.
             vm.list_urtug = response;
             vm.dataLook = response;
             paging();
+            vm.loading = false;
             // debugger
           }, function(errResponse){
+            vm.loading = false;
 
           }
         )

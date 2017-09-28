@@ -7,6 +7,7 @@ angular.
 
     function PengumpulanDataBebanKerjaController(PengumpulanDataBebanKerjaService, $uibModal, $document, $scope, EkinerjaService) {
       var vm = this;
+      vm.loading = true;
 
       EkinerjaService.checkCredential();
       // EkinerjaService.checkRole($.parseJSON(sessionStorage.getItem('credential')).id);
@@ -37,7 +38,7 @@ angular.
       			vm.loading = false;
       			debugger
       		}, function(errResponse){
-
+      			vm.loading = true;
       		}
       	);
       }

@@ -1,6 +1,4 @@
- <div class="modal-header" style="background-color:#1fcfe0;">
-    <h3 class="modal-title" id="modal-title" style="padding-bottom: 15px;font-size: 20px;">Tambah Uraian Tugas</h3>
-</div>
+
 <form ng-submit="form_urtug.ok()" class="form-horizontal">
 <div class="modal-body" id="modal-body">
     <input type="hidden" value=""/>
@@ -11,16 +9,17 @@
                     <div class="body">
                     <div class="row clearfix">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="col-md-12" style="margin-bottom:10px">
+                            <!-- <div class="col-md-12" style="margin:0px"> -->
                                 <!-- <div class="col-md-1"></div> -->
-                                <div class="col-sm-3" style="margin-top:5px">
-                                    <p><b>Kegiatan</b></p>
-                                </div>
-                                <div class="col-sm-1" style="margin-top:5px"><b>:</b></div>
-                                <div class="col-md-8">
-                                <textarea type="text" class="form-control" ng-model="form_urtug.data_urtug.deskripsi" ng-required="true" rows="6"></textarea>
-                                </div>
-                            </div>
+                                <!-- <div class="col-sm-3" style="margin-top:5px"> -->
+                                    <!-- <p><b>Kegiatan</b></p> -->
+                                <!-- </div> -->
+                                <!-- <div class="col-sm-1" style="margin-top:5px"><b>:</b></div> -->
+                                <!-- <div class="col-md-8"> -->
+                                <label>Deskripsi Uraian Tugas</label>
+                                <textarea type="text" class="form-control" ng-model="form_urtug.data_urtug.deskripsi" ng-required="true" rows="6" cols="20" ></textarea>
+                                <!-- </div> -->
+                            <!-- </div> -->
                             <div class="col-md-12" style="margin-bottom:10px" hidden>
                                 <!-- <div class="col-md-1"></div> -->
                                 <div class="col-sm-3" style="margin-top:5px">
@@ -90,12 +89,14 @@
         </div>
     </div>
 </div>
-    <div class="modal-footer">
+    <div class="modal-footer" style="margin-right: 10px;">
         <button type="submit"  class="btn btn-primary waves-effect">Save</button>
-        <button type="button" ng-click="form_urtug.cancel()" class="btn btn-danger waves-effect" data-dismiss="modal">Cancel</button>
+        <button type="reset" class="btn btn-danger waves-effect" >Reset</button>
+        <button type="button" ng-click="form_urtug.cancel()" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
     </div>
 </form>
 <!-- <div class="modal-footer">
     <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
     <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
 </div> -->
+

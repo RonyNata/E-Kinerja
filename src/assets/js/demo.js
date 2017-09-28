@@ -65,24 +65,9 @@ function setSettingListHeightAndScroll(isFirstTime) {
     });
 }
 
-function menuSideBar() {
-    $('.right-sidebar .demo-choose-skin li').on('click', function () {
-        var $body = $('body');
-        var $this = $(this);
-
-        var existTheme = $('.left-sidebar .demo-choose-skin li.active').data('theme');
-        $('.left-sidebar .demo-choose-skin li').removeClass('active');
-        $body.removeClass('theme-' + existTheme);
-        $this.addClass('active');
-
-        $body.addClass('theme-' + $this.data('theme'));
-    });
-}
-
-
 //Activate notification and task dropdown on top right menu
 function activateNotificationAndTasksScroll() {
-    $('.navbar-left .dropdown-menu .body .menu').slimscroll({
+    $('.navbar-right .dropdown-menu .body .menu').slimscroll({
         height: '254px',
         color: 'rgba(0,0,0,0.5)',
         size: '4px',

@@ -83,6 +83,7 @@
 		      	// showToastrSuccess('ditambahkan');
 		      	// getUrtugByJabatan();
 		      	EkinerjaService.showToastrSuccess('Role <b>'+pegawai.nama+'</b> Berhasil Diubah Menjadi <b>' + role +'</b>');
+		      	pegawai.role = role;
 		      	getUrtugByJabatan();
 		        // vm.selected = selectedItem;
 		      }, function () {

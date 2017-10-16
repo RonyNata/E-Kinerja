@@ -55,9 +55,53 @@
         templateUrl: 'app/kontrakPegawai/kontrakPegawai.html',
         controller: 'KontrakPegawaiController',
         controllerAs: 'kontrak'
+      })
+      .state('inidpa', {
+        url: '/dpa',
+        templateUrl: 'app/kontrakPegawai/kontrakPegawai.html',
+        controller: 'KontrakPegawaiController',
+        // controllerAs: 'kontrakdpa'
+        resolve:{
+          reload: function(){
+            $state.go('kontrak');
+          }
+        }
+      })
+      .state('bukandpa', {
+        url: '/nondpa',
+        templateUrl: 'app/kontrakPegawai/kontrakPegawai.html',
+        controller: 'KontrakPegawaiController',
+        // controllerAs: 'kontraknondpa'
+        resolve:{
+          reload: function(){
+            $state.go('kontrak');
+          }
+        }
+      })
+      .state('setting', {
+        url: '/settings',
+        templateUrl: 'app/kontrakPegawai/kontrakPegawai.html',
+        controller: 'KontrakPegawaiController',
+        // controllerAs: 'kontrakdpa'
+        resolve:{
+          reload: function(){
+            $state.go('kontrak');
+          }
+        }
+      })
+      .state('skin', {
+        url: '/skins',
+        templateUrl: 'app/kontrakPegawai/kontrakPegawai.html',
+        controller: 'KontrakPegawaiController',
+        // controllerAs: 'kontraknondpa'
+        resolve:{
+          reload: function(){
+            $state.go('kontrak');
+          }
+        }
       });
 
-    $urlRouterProvider.otherwise('/welcome');
+    // $urlRouterProvider.otherwise('/');
   }
 
 

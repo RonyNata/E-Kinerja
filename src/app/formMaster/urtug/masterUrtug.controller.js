@@ -6,21 +6,21 @@ angular.
 	.controller('MasterUrtugController', MasterUrtugController);
 
 	function MasterUrtugController(MasterUrtugService, $uibModal, $document, toastr, EkinerjaService, $scope){
-		var vm = this;
-		vm.loading = false;
-
 		EkinerjaService.checkCredential();
       	// EkinerjaService.checkRole($.parseJSON(sessionStorage.getItem('credential')).id);
+		var vm = this;
 
-		vm.data = false;
 
 		vm.data_pegawai = {};
 		vm.data_urtug = [];
+		$scope.entries = 5;
+		$scope.currentPage = 0;
 		$scope.deskripsi;
 
 		getUrtug();
 
 		function getUrtug(){
+			vm.loading = true;
 			MasterUrtugService.GetAllUrtug().then(
 				function(response){
 					// vm.data_pegawai = response;
@@ -30,9 +30,8 @@ angular.
 					vm.loading = true;
 					// debugger
 				},function(errResponse){
-					vam.loading = true;
-				}
-			)
+					vm.loading = true;
+				})
 		}
 
 		$scope.$watch('deskripsi', function(){
@@ -43,6 +42,13 @@ angular.
 				vm.dataLook = vm.data_urtug;
 			}
 			paging();
+		})
+
+		$scope.$watch('entries', function(){
+			// if($scope.searchNip != '')
+			// 	vm.dataLook = EkinerjaService.searchByNip($scope.searchNip, data);
+			paging();
+			debugger
 		})
 
 		function showToastrSuccess(message) {
@@ -105,10 +111,42 @@ angular.
 	      });
 	    };
 
-	    function paging(){ 
-          $scope.filteredTodos = [];
-          $scope.currentPage = 0;
-          $scope.numPerPage = 5;
+	    // function paging(){ 
+     //      $scope.filteredTodos = []
+     //      ,$scope.currentPage = 0
+     //      ,$scope.numPerPage = 5
+     //      ,$scope.maxSize = Math.ceil(vm.dataLook.length / $scope.numPerPage);
+
+     //      function Page(){
+     //        $scope.page = [];
+     //        for(var i = 0; i < vm.dataLook.length/$scope.numPerPage; i++){
+     //            $scope.page.push(i+1);
+     //        }
+     //      }
+     //      Page();
+     //      $scope.pad = function(i){
+     //        $scope.currentPage += i;
+     //      }
+
+     //      $scope.max = function(){
+     //        if($scope.currentPage >= $scope.maxSize - 1)
+     //            return true;
+     //        else return false;
+     //      }
+
+     //      $scope.$watch("currentPage + numPerPage", function() {
+     //        var begin = (($scope.currentPage) * $scope.numPerPage)
+     //        , end = begin + $scope.numPerPage;
+
+     //        $scope.filteredData = vm.dataLook.slice(begin, end);
+     //      });
+     //    }
+
+
+		function paging(){ 
+          $scope.filteredData = [];
+          // $scope.currentPage = 0;
+          $scope.numPerPage = $scope.entries;
           $scope.maxSize = Math.ceil(vm.dataLook.length/$scope.numPerPage);
           function page(){
             $scope.page = [];
@@ -129,8 +167,8 @@ angular.
 
           $scope.$watch("currentPage + numPerPage", function() {
             var begin = (($scope.currentPage) * $scope.numPerPage)
-            , end = begin + $scope.numPerPage;
-
+            , end = begin + parseInt($scope.numPerPage);
+            debugger
             $scope.filteredData = vm.dataLook.slice(begin, end);
           });
         }

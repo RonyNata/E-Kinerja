@@ -58,7 +58,7 @@ $.AdminBSB.leftSideBar = {
             if (e.target.nodeName.toLowerCase() === 'i') { $target = $(e.target).parent(); }
 
             if (!$target.hasClass('bars') && _this.isOpen() && $target.parents('#leftsidebar').length === 0) {
-                if (!$target.hasClass('js-right-sidebar')) $overlay.fadeOut();
+                if (!$target.hasClass('js-right-sidebar'))  $overlay.fadeOut();
                 $body.removeClass('overlay-open');
             }
         });

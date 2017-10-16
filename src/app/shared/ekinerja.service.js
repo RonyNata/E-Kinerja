@@ -92,6 +92,10 @@
                             (1900 + date.getYear()).toString();
             return result;
         }
+
+        service.SaveCurrentState = function(){
+            sessionStorage.setItem('currentState', $state.current.name);
+        }
  
         return service;
     }])

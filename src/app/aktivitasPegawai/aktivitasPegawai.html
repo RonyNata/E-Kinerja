@@ -1,80 +1,100 @@
 <ekinerja-navbar></ekinerja-navbar>
-<section style="width: 90%;padding-left: 10%;padding-top: 100px;">
-    <div class="container-fluid">
+<section style="padding-top: 90px;">
+    <div class="container-fluid" >
         <div class="row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Catatan Aktivitas Harian</h2>
+                        <i class="material-icons" style="float: left;">content_paste</i>
+                        <h2 style="padding-left: 30px;padding-top: 3px;">Catatatan Aktifitas Harian</h2>
                     </div>
-                    <div class="body">
-                        <div class="row clearfix">
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="col-md-12" >
-                            <div>
-                                Tanggal: {{aktivitas.date}}
-                            </div>
-                            <!-- min="{{aktivitas.now}}" -->
-                                <div class="col-md-3">
-                                    <input type="date" class="form-control" ng-model="tanggal" >
+                    <div class="body" >
+                        <div class="row clearfix" >
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="col-md-12" >
+                                    <div class="col-md-2">
+                                        <div class="col-md-12" style="float: left;margin-left: -15px;">
+                                            <h6>Tanggal Aktifitas</h6>
+                                            <input type="date" class="form-control" ng-model="tanggal">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style="padding-top: 10px;">
+                                        <!-- <div class="collapse" id="collapseExample"> -->
+                                            <div class="well">
+                                                NIP : {{aktivitas.pegawai.nipPegawai}}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                                                Nama : {{aktivitas.pegawai.namaPegawai}}<br>
+                                                Jabatan : {{aktivitas.pegawai.jabatan}}&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;
+                                                Unit : {{aktivitas.pegawai.unit}}
+                                            </div>
+                                        <!-- </div>     -->
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="margin-top: -40px;margin-right: -7px;" class="pull-right">
+                                    <div class="col-md-8" style="float: left;padding-left: 15px;margin-top: 10px;">
+                                        <button class="btn btn-primary waves-effect" ng-click="aktivitas.open()"><i class="material-icons">add</i><span>TAMBAHKAN AKTIFITAS</span></button>
+                                    </div>
+                                    <div class="col-md-1" style="margin-top: 16px;padding-left: 70px;">
+                                        Cari
+                                    </div>
+                                    <div class="col-md-3" style="margin-top: 10px;float: right;">
+                                        <input type="text" class="form-control" ng-model="searchName" ng-required="true" placeholder="Aktivitas">
+                                    </div>
+                                </div>
+                                <div class="col-md-12" style="margin-top: -50px;">
+                                    <div class="body table-responsive" style="margin-bottom: -70px;">
+                                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable" cellspacing="0" style="text-align: center;table-layout: fixed;width: 101%;margin-left: -5px;">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 6%; text-align: center">
+                                                        <select type="text" class="form-control" ng-model="entries" ng-required="true" placeholder="Entries">
+                                                            <option value="5">5</option>
+                                                            <option value="10">10</option>
+                                                            <option value="25">25</option>
+                                                            <option value="50">50</option>
+                                                            <option value="100">100</option>
+                                                        </select>
+                                                    </th>
+                                                    <th style="text-align: center">Aktifitas : {{aktivitas.date}}</th>
+                                                    <th style="width: 10%; text-align: center">Status</th>
+                                                    <th style="width: 10%; text-align: center">Capaian (menit)</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="rincian in filteredData" ng-click="akses.open(data)">
+                                                    <td>{{$index + 1}}</td>
+                                                    <td style="text-align: left;overflow: hidden;word-wrap: break-word;">{{rincian.namaUrtug}}</td>
+                                                    <td>{{rincian.statusEkinerja == 1 ? 'DPA' : ''}}
+                                                        {{rincian.statusEkinerja == 2 ? 'Non-DPA' : ''}}
+                                                        {{rincian.statusEkinerja == 3 ? 'Lain - Lain' : ''}}
+                                                        {{rincian.statusEkinerja == 4 ? 'Inovasi' : ''}}</td>
+                                                    <td>{{rincian.capaianMenit}}</td>
+                                                    <!-- <td>
+                                                        <button type="button" class="btn btn-warning waves-effect btn-circle waves-circle" data-toggle="modal" data-target="#tModal"><i class="material-icons">edit</i></button>
+                                                        <button type="button" class="btn btn-danger waves-effect btn-circle waves-circle"><i class="material-icons">delete_forever</i></button>
+                                                    </td> -->
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <div style="padding-top: 3px;margin-right: -7px;" class="pull-right">
+                                            <ul>
+                                                <li style="display: inline-block;">
+                                                    <button class="btn btn-primary" ng-click="pad(-1)" ng-disabled="currentPage==0" aria-label="Use Android" style="cursor: pointer;">
+                                                      &lt; PREV                          
+                                                    </button>
+                                                </li>
+                                                <li style="display: inline-block;">
+                                                    <span style="margin-left:15px;margin-right: 15px;display: inline-block;">Page {{currentPage+1}} Of {{maxSize}}<span>
+                                                </li>
+                                                <li style="display: inline-block;">
+                                                    <button class="btn btn-primary" ng-click="pad(1)" ng-disabled="max()" aria-label="Use Android" style="cursor: pointer;">
+                                                      NEXT &gt;                          
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-12" >
-                                NIP : {{aktivitas.pegawai.nipPegawai}}
-                            </div>
-                            <div class="col-md-12" >
-                                Nama : {{aktivitas.pegawai.namaPegawai}}
-                            </div>
-                            <div class="col-md-12" >
-                                Jabatan : {{aktivitas.pegawai.jabatan}}
-                            </div>
-                            <div class="col-md-12" >
-                                Unit : {{aktivitas.pegawai.unit}}
-                            </div>
-                            <div class="col-md-12">
-                                <div class="col-md-10"></div>    
-                                <div class="col-md-2">
-                                    <button class="btn btn-primary waves-effect" ng-click="aktivitas.open()">Tambahkan Aktivitas</button>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div style="padding-bottom: 10px"></div>
-                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th style="width: 5%; text-align: center">No</th>
-                                    <th style="text-align: center"><input type="text" class="form-control" ng-model="searchName" ng-required="true" placeholder="Aktivitas"></th>
-                                    <th style="width: 10%; text-align: center">Status</th>
-                                    <th style="width: 5%; text-align: center">Capaian (menit)</th>
-                                    <!-- <th width="14%" style="width: 10%; text-align: center">Action</th> -->
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="rincian in filteredData">
-                                    <td>{{$index + 1}}</td>
-                                    <td>{{rincian.namaUrtug}}</td>
-                                    <td>{{rincian.statusEkinerja == 1 ? 'DPA' : ''}}
-                                        {{rincian.statusEkinerja == 2 ? 'Non-DPA' : ''}}
-                                        {{rincian.statusEkinerja == 3 ? 'Lain - Lain' : ''}}
-                                        {{rincian.statusEkinerja == 4 ? 'Inovasi' : ''}}</td>
-                                    <td>{{rincian.capaianMenit}}</td>
-                                    <!-- <td>
-                                        <button type="button" class="btn btn-warning waves-effect btn-circle waves-circle" data-toggle="modal" data-target="#tModal"><i class="material-icons">edit</i></button>
-                                        <button type="button" class="btn btn-danger waves-effect btn-circle waves-circle"><i class="material-icons">delete_forever</i></button>
-                                    </td> -->
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div layout="row">
-                            <div class="col-md-5"></div>
-                            <button class="btn btn-primary btn-circle waves-circle waves-effect" ng-click="pad(-1)" ng-disabled="currentPage==0" aria-label="Use Android">
-                                <i class="material-icons">navigate_before</i>
-                            </button>
-                            <label style="margin-top: 20px">{{currentPage+1 + '/' + maxSize}}</label>
-                            <button class="btn btn-primary btn-circle waves-circle waves-effect" ng-click="pad(1)" ng-disabled="max()" aria-label="Use Android">
-                              <i class="material-icons">navigate_next</i>
-                            </button>
                         </div>
                     </div>
                 </div>

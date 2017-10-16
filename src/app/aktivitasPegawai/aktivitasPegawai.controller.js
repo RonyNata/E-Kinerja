@@ -13,6 +13,8 @@ angular.
 
       vm.pegawai = $.parseJSON(sessionStorage.getItem('credential'));
       vm.rincian = [];
+      $scope.entries = 5;
+      $scope.currentPage = 0;
       // vm.date = EkinerjaService.IndonesianDateFormat(new Date());
 				// console.log(JSON.stringify(vm.date));
       $scope.tanggal = new Date();
@@ -42,6 +44,13 @@ angular.
       		}
       	)
       }
+
+      $scope.$watch('entries', function(){
+			// if($scope.searchNip != '')
+			// 	vm.dataLook = EkinerjaService.searchByNip($scope.searchNip, data);
+			paging();
+			debugger
+		})
 
       vm.open = function (parentSelector) {
 	      console.log(JSON.stringify(vm.pegawai));
@@ -82,35 +91,65 @@ angular.
 	      });
 	    };
 
+	    // function paging(){ 
+	    //       $scope.filteredData = [];
+	    //       $scope.currentPage = 0;
+	    //       $scope.numPerPage = 5;
+	    //       $scope.maxSize = Math.ceil(vm.dataLook.length/$scope.numPerPage);
+	    //       function page(){
+	    //         $scope.page = [];
+	    //         for(var i = 0; i < vm.dataLook.length/$scope.numPerPage; i++){
+	    //             $scope.page.push(i+1);
+	    //         }
+	    //       }
+	    //       page();
+	    //       $scope.pad = function(i){
+	    //         $scope.currentPage += i;
+	    //       }
+
+	    //       $scope.max = function(){
+	    //         if($scope.currentPage >= $scope.maxSize - 1)
+	    //             return true;
+	    //         else return false;
+	    //       }
+
+	    //       $scope.$watch("currentPage + numPerPage", function() {
+	    //         var begin = (($scope.currentPage) * $scope.numPerPage)
+	    //         , end = begin + $scope.numPerPage;
+
+	    //         $scope.filteredData = vm.dataLook.slice(begin, end);
+	    //       });
+	    //     }
+
 	    function paging(){ 
-	          $scope.filteredData = [];
-	          $scope.currentPage = 0;
-	          $scope.numPerPage = 5;
-	          $scope.maxSize = Math.ceil(vm.dataLook.length/$scope.numPerPage);
-	          function page(){
-	            $scope.page = [];
-	            for(var i = 0; i < vm.dataLook.length/$scope.numPerPage; i++){
-	                $scope.page.push(i+1);
-	            }
-	          }
-	          page();
-	          $scope.pad = function(i){
-	            $scope.currentPage += i;
-	          }
+          $scope.filteredData = [];
+          // $scope.currentPage = 0;
+          $scope.numPerPage = $scope.entries;
+          $scope.maxSize = Math.ceil(vm.dataLook.length/$scope.numPerPage);
+          function page(){
+            $scope.page = [];
+            for(var i = 0; i < vm.dataLook.length/$scope.numPerPage; i++){
+                $scope.page.push(i+1);
+            }
+          }
+          page();
+          $scope.pad = function(i){
+            $scope.currentPage += i;
+          }
 
-	          $scope.max = function(){
-	            if($scope.currentPage >= $scope.maxSize - 1)
-	                return true;
-	            else return false;
-	          }
+          $scope.max = function(){
+            if($scope.currentPage >= $scope.maxSize - 1)
+                return true;
+            else return false;
+          }
 
-	          $scope.$watch("currentPage + numPerPage", function() {
-	            var begin = (($scope.currentPage) * $scope.numPerPage)
-	            , end = begin + $scope.numPerPage;
-
-	            $scope.filteredData = vm.dataLook.slice(begin, end);
-	          });
-	        }
+          $scope.$watch("currentPage + numPerPage", function() {
+            var begin = (($scope.currentPage) * $scope.numPerPage)
+            , end = begin + parseInt($scope.numPerPage);
+            debugger
+            $scope.filteredData = vm.dataLook.slice(begin, end);
+          });
+        }
 
         $scope.$watch('searchName', function(){
 			if($scope.searchName != undefined){
